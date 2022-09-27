@@ -54,5 +54,10 @@ jobs:
           promote: true
           version: '0-6-0'
 
-
+      - name: Acceptance test with Gradle
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          arguments: acceptance
 
