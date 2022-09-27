@@ -50,6 +50,6 @@ class RootController {
     @Path("test")
     @Produces(MediaType.APPLICATION_JSON)
     String test() {
-        "test1"
+        "test2"
     }
 }
