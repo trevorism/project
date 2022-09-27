@@ -27,8 +27,8 @@ jobs:
       - name: Auth with google
         uses: 'google-github-actions/auth@v0'
         with:
-          service_account: 'github-trevorism-pushbutton@trevorism-pushbutton.iam.gserviceaccount.com'
-          workload_identity_provider: 'projects/554312988554/locations/global/workloadIdentityPools/github-trevorism-pushbutton-pool/providers/trevorism-pushbutton-provider'
+          service_account: 'github-trevorism-project@trevorism-project.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/51970111147/locations/global/workloadIdentityPools/github-trevorism-project-pool/providers/trevorism-project-provider'
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
