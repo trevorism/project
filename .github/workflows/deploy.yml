@@ -52,6 +52,7 @@ jobs:
           working_directory: "build/staged-app"
           deliverables: 'app.yaml'
           promote: true
+          version: 0-0-3
 
       - name: Acceptance test with Gradle
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
