@@ -58,21 +58,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-
 appengine {
     deploy {
         projectId = "trevorism-project"
         stopPreviousVersion = true
         promote = true
-        version = "0-0-2"
+        version = "0-0-3"
     }
 }
 
 check {
     dependsOn('jacocoTestReport')
-}
-
-task deliver {
-    dependsOn("build","appengineDeploy")
-    appengineDeploy.mustRunAfter("check")
 }
