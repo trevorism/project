@@ -5,6 +5,7 @@ import com.trevorism.http.BlankHttpClient
 import com.trevorism.http.HttpClient
 import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
+import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 
 import javax.ws.rs.GET
@@ -13,6 +14,7 @@ import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
+@Api("Project Operations")
 @Path("/project")
 class ProjectController {
 
@@ -46,7 +48,7 @@ class ProjectController {
     @Secure(value = Roles.USER, allowInternal = true)
     @Path("service/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    TrevorismProject getProjectForService(@PathParam("name") name) {
+    TrevorismProject getProjectForService(@PathParam("name") String name) {
         String text = client.get("https://raw.githubusercontent.com/trevorism/$name/master/.github/workflows/deploy.yml")
 
         if (text == "404: Not Found")

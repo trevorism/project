@@ -44,12 +44,4 @@ class RootController {
     Response help(){
         Response.temporaryRedirect(new URI("/swagger/index.html")).build()
     }
-
-    @ApiOperation(value = "Returns 'test1' if the application is alive")
-    @GET
-    @Path("test")
-    @Produces(MediaType.APPLICATION_JSON)
-    String test() {
-        "test2"
-    }
 }
