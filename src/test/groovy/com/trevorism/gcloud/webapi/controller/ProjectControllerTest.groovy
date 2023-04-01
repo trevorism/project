@@ -1,7 +1,7 @@
 package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.http.HttpClient
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class ProjectControllerTest {
     @Test

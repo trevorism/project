@@ -3,27 +3,28 @@ package com.trevorism.gcloud.webapi.controller
 import com.trevorism.gcloud.webapi.model.TrevorismProject
 import com.trevorism.http.BlankHttpClient
 import com.trevorism.http.HttpClient
+import com.trevorism.http.util.InvalidRequestException
 import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
-import io.swagger.annotations.Api
-import io.swagger.annotations.ApiOperation
+import io.micronaut.http.HttpStatus
+import io.micronaut.http.MediaType
+import io.micronaut.http.annotation.Controller
+import io.micronaut.http.annotation.Get
+import io.micronaut.http.exceptions.HttpStatusException
+import io.swagger.v3.oas.annotations.Operation
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.PathParam
-import javax.ws.rs.Produces
-import javax.ws.rs.core.MediaType
 
-@Api("Project Operations")
-@Path("/project")
+@Controller("/project")
 class ProjectController {
 
+    private static final Logger log = LoggerFactory.getLogger(ProjectController)
     HttpClient client = new BlankHttpClient()
 
-    @ApiOperation(value = "Get all projects")
-    @GET
+    @Operation(summary = "Get all projects")
+    @Get(produces = MediaType.APPLICATION_JSON)
     @Secure(value = Roles.USER, allowInternal = true)
-    @Produces(MediaType.APPLICATION_JSON)
     List<TrevorismProject> getAllProjects() {
         [
                 new TrevorismProject("trevorism-gcloud", "datastore"),
@@ -43,26 +44,27 @@ class ProjectController {
         ]
     }
 
-    @ApiOperation(value = "Get project for a service")
-    @GET
+    @Operation(summary = "Get project for a service")
+    @Get(value = "/service/{name}", produces = MediaType.APPLICATION_JSON)
     @Secure(value = Roles.USER, allowInternal = true)
-    @Path("service/{name}")
-    @Produces(MediaType.APPLICATION_JSON)
-    TrevorismProject getProjectForService(@PathParam("name") String name) {
-        String text = client.get("https://raw.githubusercontent.com/trevorism/$name/master/.github/workflows/deploy.yml")
+    TrevorismProject getProjectForService(String name) {
+        try{
+            String text = client.get("https://raw.githubusercontent.com/trevorism/$name/master/.github/workflows/deploy.yml")
 
-        if (text == "404: Not Found")
+            int indexOf = text.indexOf("gcp_project:")
+            int firstQuote = text.indexOf("'", indexOf) + 1
+            int lastQuote = text.indexOf("'", firstQuote)
+
+            String projectName = text.substring(firstQuote, lastQuote)
+
+            getAllProjects().find {
+                it.name == projectName
+            }
+        }catch(InvalidRequestException e){
+            log.warn("Could not find project for service $name", e)
             return TrevorismProject.UNKNOWN_PROJECT
-
-        int indexOf = text.indexOf("gcp_project:")
-        int firstQuote = text.indexOf("'", indexOf) + 1
-        int lastQuote = text.indexOf("'", firstQuote)
-
-        String projectName = text.substring(firstQuote, lastQuote)
-
-        getAllProjects().find {
-            it.name == projectName
         }
+
     }
 
 }
