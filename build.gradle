@@ -87,5 +87,7 @@ appengine {
     deploy {
         projectId = "trevorism-project"
         version = "0-1-0"
+        stopPreviousVersion = true
+        promote = true
     }
 }

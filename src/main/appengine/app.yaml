@@ -1,3 +1,2 @@
 runtime: java17
-service: project
 entrypoint: java -jar project-all.jar
