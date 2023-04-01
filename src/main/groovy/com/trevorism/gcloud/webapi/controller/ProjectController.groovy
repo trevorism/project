@@ -12,6 +12,7 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.exceptions.HttpStatusException
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -22,7 +23,8 @@ class ProjectController {
     private static final Logger log = LoggerFactory.getLogger(ProjectController)
     HttpClient client = new BlankHttpClient()
 
-    @Operation(summary = "Get all projects")
+    @Tag(name = "Project Operations")
+    @Operation(summary = "Get all projects **Secure")
     @Get(produces = MediaType.APPLICATION_JSON)
     @Secure(value = Roles.USER, allowInternal = true)
     List<TrevorismProject> getAllProjects() {
@@ -44,7 +46,8 @@ class ProjectController {
         ]
     }
 
-    @Operation(summary = "Get project for a service")
+    @Tag(name = "Project Operations")
+    @Operation(summary = "Get project for a service **Secure")
     @Get(value = "/service/{name}", produces = MediaType.APPLICATION_JSON)
     @Secure(value = Roles.USER, allowInternal = true)
     TrevorismProject getProjectForService(String name) {
