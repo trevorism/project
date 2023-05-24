@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory
 @OpenAPIDefinition(
         info = @Info(
                 title = "Project",
-                version = "0.1.0",
-                description = "Perform an action when a threshold is met",
+                version = "0.4.0",
+                description = "Project API wraps creation and management of new projects.",
                 contact = @Contact(url = "https://trevorism.com", name = "Trevor Brooks", email = "tbrooks@trevorism.com")
         )
 )
@@ -21,7 +21,7 @@ class Application {
     private static final Logger log = LoggerFactory.getLogger( Application )
 
     static void main(String[] args) {
-        log.info("Started Threshold app.")
+        log.info("Started Project app.")
         Micronaut.run(Application, args)
     }
 }
