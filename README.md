@@ -6,6 +6,4 @@
 
 API for orchestrating creation of new projects in Trevorism.
 
-Current version: 0.1.0
-
 Deployed to [Trevorism Project](https://project.trevorism.com)
