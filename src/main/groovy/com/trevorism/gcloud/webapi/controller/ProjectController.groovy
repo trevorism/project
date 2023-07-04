@@ -6,11 +6,9 @@ import com.trevorism.http.HttpClient
 import com.trevorism.http.util.InvalidRequestException
 import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
-import io.micronaut.http.HttpStatus
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
-import io.micronaut.http.exceptions.HttpStatusException
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger

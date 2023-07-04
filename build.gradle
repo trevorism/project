@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.trevorism:micronaut-utility-beans:0.1.0'
 
     acceptanceImplementation 'io.cucumber:cucumber-groovy:6.10.4'
-
+    acceptanceImplementation 'com.google.code.gson:gson:2.10.1'
 }
 
 application {
