@@ -18,7 +18,6 @@ When(/the list of google cloud projects is requested/) {  ->
 
 
 Then(/the list of projects is returned/) {  ->
-    println jsonList
     assert jsonList.contains("trevorism-project")
     assert jsonList.contains("trevorism-auth")
     assert jsonList.contains("trevorism-data")
@@ -32,6 +31,5 @@ When(/the service name {string} is requested/) { String string ->
 
 
 Then(/the correct project is returned/) {  ->
-    println projectJson
     assert projectJson.contains("trevorism-auth")
 }

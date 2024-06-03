@@ -1,3 +1,7 @@
+## 0.6.0
+
+Update dependencies, add test/deploy events.
+
 ## 0.4.0
 
 Update dependencies, update test.yml and gradle version
