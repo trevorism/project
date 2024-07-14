@@ -7,7 +7,7 @@ class ProjectControllerTest {
     @Test
     void testGetAllProjects() {
         ProjectController pc = new ProjectController()
-        assert 14 == pc.getAllProjects().size()
+        assert 11 == pc.getAllProjects().size()
     }
 
     @Test

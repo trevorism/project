@@ -1,3 +1,7 @@
+## 0.6.1
+
+Update dependencies, and micronaut to the latest version
+
 ## 0.6.0
 
 Update dependencies, add test/deploy events.

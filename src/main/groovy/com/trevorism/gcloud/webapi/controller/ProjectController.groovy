@@ -27,19 +27,16 @@ class ProjectController {
     @Secure(value = Roles.USER, allowInternal = true)
     List<TrevorismProject> getAllProjects() {
         [
-                new TrevorismProject("trevorism-gcloud", "datastore"),
-                new TrevorismProject("trevorism-eventhub", "event"),
-                new TrevorismProject("trevorism-pushbutton", "click"),
-                new TrevorismProject("trevorism-lifesafety", "lifesafety"),
-                new TrevorismProject("trevorism-predict", "predict"),
-                new TrevorismProject("trevorism-auth", "auth"),
-                new TrevorismProject("trevorism-testing", "testing"),
                 new TrevorismProject("trevorism-action", "action"),
-                new TrevorismProject("trevorism-project", "project"),
+                new TrevorismProject("trevorism-auth", "auth"),
+                new TrevorismProject("trevorism-cleo", "cleo"),
                 new TrevorismProject("trevorism-data", "data"),
                 new TrevorismProject("trevorism-draw", "draw"),
-                new TrevorismProject("trevorism-trade", "trade"),
+                new TrevorismProject("trevorism-gcloud", "datastore"),
                 new TrevorismProject("trevorism-memo", "memo"),
+                new TrevorismProject("trevorism-project", "project"),
+                new TrevorismProject("trevorism-testing", "testing"),
+                new TrevorismProject("trevorism-trade", "trade"),
                 new TrevorismProject("trevorism", "www")
         ]
     }
