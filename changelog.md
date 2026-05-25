@@ -1,3 +1,7 @@
+## 0.7.0
+
+Upgrade to Micronaut 5.0.0, Java 25, Gradle 9.x, and latest dependencies.
+
 ## 0.6.1
 
 Update dependencies, and micronaut to the latest version

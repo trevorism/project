@@ -1,4 +1,4 @@
-runtime: java17
+runtime: java25
 entrypoint: java -jar project-all.jar
 handlers:
   - url: /.*
