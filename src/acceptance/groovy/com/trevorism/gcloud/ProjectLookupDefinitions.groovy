@@ -8,12 +8,14 @@ import io.cucumber.groovy.Hooks
 this.metaClass.mixin(Hooks)
 this.metaClass.mixin(EN)
 
+String baseUrl = System.getenv("ACCEPTANCE_BASE_URL") ?: "https://project.trevorism.com"
+
 SecureHttpClient client = new AppClientSecureHttpClient()
 String jsonList
 String projectJson
 
 When(/the list of google cloud projects is requested/) {  ->
-    jsonList = client.get("https://project.trevorism.com/project")
+    jsonList = client.get("${baseUrl}/project")
 }
 
 
@@ -26,7 +28,7 @@ Then(/the list of projects is returned/) {  ->
 
 
 When(/the service name {string} is requested/) { String string ->
-    projectJson = client.get("https://project.trevorism.com/project/service/${string}")
+    projectJson = client.get("${baseUrl}/project/service/${string}")
 }
 
 
