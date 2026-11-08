@@ -59,7 +59,7 @@ class ProjectController {
                 it.name == projectName
             }
         }catch(InvalidRequestException e){
-            log.warn("Could not find project for service $name", e)
+            log.warn("Could not find project for service $name: ${e.message}")
             return TrevorismProject.UNKNOWN_PROJECT
         }
 
